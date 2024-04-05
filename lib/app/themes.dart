@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 final ThemeData themes = ThemeData(
+  cardColor: Colors.white,
   brightness: Brightness.light,
-  splashColor: const Color.fromARGB(25, 253, 141, 20),
-  highlightColor: const Color.fromARGB(25, 253, 141, 20),
-  primaryColor: const Color.fromARGB(255, 236, 255, 116),
+  splashColor: const Color.fromRGBO(199, 150, 119, 1),
+  highlightColor: const Color.fromRGBO(100, 50, 0, 1),
+  primaryColor: const Color.fromARGB(255, 103, 239, 108),
   bottomSheetTheme: const BottomSheetThemeData(
       surfaceTintColor: Colors.white
   ),
@@ -13,7 +14,7 @@ final ThemeData themes = ThemeData(
   ),
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
-    primary: Color.fromARGB(255, 236, 255, 116),
+    primary: Color.fromARGB(255, 103, 239, 108),
     onPrimary: Colors.white,
     secondary: Colors.white,
     onSecondary: Colors.white,

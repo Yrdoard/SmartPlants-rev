@@ -1,49 +1,154 @@
-// child: Scaffold(
-// backgroundColor: Colors.transparent,
-// body: Center(
-// child: Column(
-// children: <Widget>[
-// Container(
-// height: 60,
-// width: double.infinity,
-// margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 25),
-// padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-//
-// child: Center(
-// child: Text("Beranda",
-// style: GoogleFonts.poppins(
-// textStyle: const TextStyle(
-// color: Color.fromARGB(255, 0, 111, 18),
-// fontSize: 30,
-// fontWeight: FontWeight.w800,),
-// ),
-// )
-// ),
-// ),
-// Container(
-// height: 58,
-// width: 162,
-// margin: const EdgeInsets.symmetric(
-// horizontal: 100, vertical: 20),
-// padding: const EdgeInsets.symmetric(
-// horizontal: 0, vertical: 0),
-// decoration: BoxDecoration(
-// color: Theme
-//     .of(context)
-//     .cardColor,
-// boxShadow: [
-// BoxShadow(
-// color: Colors.black.withOpacity(0.3),
-// spreadRadius: 1,
-// blurRadius: 3,
-// offset: const Offset(0,3),
-// ),
-// ],
-// borderRadius: BorderRadius.circular(15)
-// ),
-// ),
-// ],
-//
-// )
-// ),
-// )
+import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
+
+class NumberPage extends StatefulWidget {
+  const NumberPage({super.key});
+
+  @override
+  State<NumberPage> createState() => _NumberPageState();
+}
+
+class _NumberPageState extends State<NumberPage> {
+  var hour = 0;
+  var minute = 0;
+  var timeFormat = "AM";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            waktu(),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                  color: Colors.black87,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  NumberPicker(
+                    minValue: 0,
+                    maxValue: 12,
+                    value: hour,
+                    zeroPad: true,
+                    infiniteLoop: true,
+                    itemWidth: 80,
+                    itemHeight: 60,
+                    onChanged: (value) {
+                      setState(() {
+                        hour = value;
+                      });
+                    },
+                    textStyle:
+                    const TextStyle(color: Colors.grey, fontSize: 20),
+                    selectedTextStyle:
+                    const TextStyle(color: Colors.white, fontSize: 30),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                          top: BorderSide(
+                            color: Colors.white,
+                          ),
+                          bottom: BorderSide(color: Colors.white)),
+                    ),
+                  ),
+                  NumberPicker(
+                    minValue: 0,
+                    maxValue: 59,
+                    value: minute,
+                    zeroPad: true,
+                    infiniteLoop: true,
+                    itemWidth: 80,
+                    itemHeight: 60,
+                    onChanged: (value) {
+                      setState(() {
+                        minute = value;
+                      });
+                    },
+                    textStyle:
+                    const TextStyle(color: Colors.grey, fontSize: 20),
+                    selectedTextStyle:
+                    const TextStyle(color: Colors.white, fontSize: 30),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                          top: BorderSide(
+                            color: Colors.white,
+                          ),
+                          bottom: BorderSide(color: Colors.white)),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            timeFormat = "AM";
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          decoration: BoxDecoration(
+                              color: timeFormat == "AM"
+                                  ? Colors.grey.shade800
+                                  : Colors.grey.shade700,
+                              border: Border.all(
+                                color: timeFormat == "AM"
+                                    ? Colors.grey
+                                    : Colors.grey.shade700,
+                              )),
+                          child: const Text(
+                            "AM",
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            timeFormat = "PM";
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: timeFormat == "PM"
+                                ? Colors.grey.shade800
+                                : Colors.grey.shade700,
+                            border: Border.all(
+                              color: timeFormat == "PM"
+                                  ? Colors.grey
+                                  : Colors.grey.shade700,
+                            ),
+                          ),
+                          child: const Text(
+                            "PM",
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  Widget waktu() => Text(
+      "Pick Your Time! ${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, "0")} ${timeFormat}",
+      style:
+      const TextStyle(fontWeight: FontWeight.bold, fontSize: 18));
+}
