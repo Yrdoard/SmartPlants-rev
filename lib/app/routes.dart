@@ -3,12 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smartplants/pages/atur_jadwal.dart';
 import 'package:smartplants/pages/home_page.dart';
 import 'package:smartplants/pages/jadwal.dart';
-import 'package:smartplants/pages/tes.dart';
+
+import '../pages/navbar.dart';
 
 final routes = GoRouter(routes: [
   GoRoute(
     path: '/',
-    builder: (context, state) => NavBar()
+    builder: (context, state) => const NavBar()
   ),
   GoRoute(
       path: '/Beranda',

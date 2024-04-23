@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData themes = ThemeData(
+  textTheme: GoogleFonts.poppinsTextTheme(textTheme).copyWith(
+  ),
   cardColor: Colors.white,
   brightness: Brightness.light,
   splashColor: const Color.fromRGBO(199, 150, 119, 1),
@@ -26,4 +29,5 @@ final ThemeData themes = ThemeData(
     onSurface: Colors.black,
   ),
   useMaterial3: true,
+
 );

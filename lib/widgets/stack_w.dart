@@ -117,5 +117,30 @@ class BstackW extends StatelessWidget {
 
         ]
     );
+
+  }
+
+}
+class Background extends StatelessWidget {
+  const Background({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+          ),
+          Positioned(
+            child: SizedBox(
+              child: Image.asset(
+                "assets/image/tanamanBg.png",),
+            ),
+          ),
+
+        ]
+    );
   }
 }

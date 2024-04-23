@@ -12,7 +12,6 @@ class App extends StatelessWidget{
       routerConfig: routes,
       theme: themes,
       debugShowCheckedModeBanner: false,
-
     );
   }
 
